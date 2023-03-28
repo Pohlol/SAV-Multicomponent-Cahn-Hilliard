@@ -1,17 +1,18 @@
 function CH_test
-% C-H test
+% this program test convergence of the SAV method for Cahn-Hilliard
+% equations
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%tic
+
 format long;
 
 
 T=1;    % final time
 
-
+%choose the number of finer timesteps
 tau_vect =.2*2.^(-1:-1:-6); 
 
 
-%% 
+%size of this for loop chooses the number of meshes
 for ih=1:6
     
 %     figure
@@ -26,7 +27,7 @@ for ih=1:6
     
     
     
-        %mass and stiffness matrix assembly
+        % mass and stiffness matrix assembly
         [A,M]=assembly_bulk(Nodes,Elements);
 
     
@@ -35,9 +36,8 @@ for ih=1:6
     %% time steps loop
     for jtau=1:length(tau_vect)
         tau=tau_vect(jtau)
-        local_errorMC(Nodes,Elements,A,M,T,ih,tau)
+        local_error(Nodes,Elements,A,M,T,ih,tau)
 
     end
 end
-
 
