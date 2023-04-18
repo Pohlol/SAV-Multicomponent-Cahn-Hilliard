@@ -4,7 +4,7 @@ function [val] = DFF(phi,N)
     for i=1:N
         for j=1:N
             if i~=j
-                val(:,i) = val(:,i) + 2*phi(:,i).*phi(:,j).^2;
+                val(:,i) = val(:,i) + 4*phi(:,i).*phi(:,j).^2;
             end
         end
     end   
